@@ -22,7 +22,6 @@ public class Main {
         chooseSecondNumber = Integer.toString(randomNumber);
         while (checkForRepeatingNumbers(chooseSecondNumber)) {
             thinkSecondNumber();
-
         }
     }
 
@@ -44,7 +43,7 @@ public class Main {
 
         try {
             Integer.parseInt(input);
-        } catch (NumberFormatException ignored) {
+        } catch (NumberFormatException e) {
             System.out.println("invalid input");
         }
     }
@@ -82,37 +81,37 @@ public class Main {
 
         int bulls;
         int cows;
-        int guesses = 1;
-        boolean notFound = true;
+        int guess = 1;
+        boolean isFound = true;
 
-        while (notFound) {
-            System.out.print("Enter guess number " + guesses + ": ");
+        while (isFound) {
+            System.out.print("Enter guess number " + guess + ": ");
             String guessedNumber = sc.nextLine();
             bulls = countBulls(guessedNumber, chooseFirstNumber);
             cows = countCows(guessedNumber, chooseFirstNumber);
             checkInputNumber(guessedNumber);
-            if (guesses >= 20) {
+            if (guess >= 10) {
                 System.out.println("Bulls = " + bulls + "  Cows = " + cows);
                 System.out.println("Game over!");
                 System.out.println("The correct number was: " + chooseFirstNumber);
-                notFound = false;
+                isFound = false;
             }
             if (checkForRepeatingNumbers(guessedNumber)) {
-                System.out.println("Your guess should not contain repeating digits.");
+                System.out.println("Try again");
                 continue;
             }
             if (guessedNumber.length() != 4) {
-                System.out.println("Your guess should contain 4 symbols (Digits)");
+                System.out.println("Try again");
                 continue;
             }
             if (bulls == 4) {
                 System.out.println("Bulls = " + bulls + "  Cows = " + cows);
                 System.out.println("You win!");
-                notFound = false;
+                isFound = false;
             }
             if (!checkForRepeatingNumbers(guessedNumber)) {
                 System.out.println("Bulls = " + bulls + "  Cows = " + cows);
-                guesses++;
+                guess++;
             }
         }
     }
@@ -125,8 +124,8 @@ public class Main {
         int cows;
         int guess1 = 1;
         int guess2 = 1;
-        boolean notFound = true;
-        while (notFound) {
+        boolean isFound = true;
+        while (isFound) {
             System.out.print("player One : " + guess1 + ": ");
             String guessTheNumber1 = input.nextLine();
 
@@ -134,18 +133,18 @@ public class Main {
             cows = countCows(guessTheNumber1, chooseFirstNumber);
             checkInputNumber(guessTheNumber1);
 
-            if (guess1 >= 20) {
+            if (guess1 >= 10) {
                 System.out.println("Bulls = " + bulls + "Cows = " + cows);
                 System.out.println("Game Over!");
                 System.out.println("The correct number for player one was: " + chooseFirstNumber);
-                notFound = false;
+                isFound = false;
             }
             if (checkForRepeatingNumbers(guessTheNumber1)) {
-                System.out.println("Your guess should not contain repeating digits.");
+                System.out.println("Try again");
                 continue;
             }
             if (guessTheNumber1.length() != 4) {
-                System.out.println("Your guess should contain 4 symbols (Digits)");
+                System.out.println("Try again");
                 continue;
             }
             if (!checkForRepeatingNumbers(guessTheNumber1)) {
@@ -156,10 +155,7 @@ public class Main {
 
                 System.out.println("Player one win! ");
                 break;
-
             }
-
-
             int bulls2;
             int cows2;
 
@@ -168,19 +164,18 @@ public class Main {
             checkInputNumber(guessTheNumber2);
             bulls2 = countBulls(guessTheNumber2, chooseSecondNumber);
             cows2 = countCows(guessTheNumber2, chooseSecondNumber);
-            if (guess2 >= 20) {
+            if (guess2 >= 10) {
                 System.out.println("Bulls = " + bulls2 + "  Cows = " + cows2);
                 System.out.println("Game Over!");
                 System.out.println("The correct number for player two was: " + chooseSecondNumber);
-                notFound = false;
-
+                isFound = false;
             }
             if (checkForRepeatingNumbers(guessTheNumber2)) {
-                System.out.println("Your guess should not contain repeating digits.");
+                System.out.println("Try again");
                 continue;
             }
             if (guessTheNumber2.length() != 4) {
-                System.out.println("Your guess should contain 4 symbols (Digits)");
+                System.out.println("Try again");
                 continue;
             }
             if (!checkForRepeatingNumbers(guessTheNumber2)) {
@@ -190,7 +185,6 @@ public class Main {
             if (bulls2 == 4) {
                 System.out.println("Player 2 win!");
                 break;
-
             }
         }
     }
