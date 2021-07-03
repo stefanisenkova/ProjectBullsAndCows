@@ -89,7 +89,6 @@ public class Main {
             String guessedNumber = sc.nextLine();
             bulls = countBulls(guessedNumber, chooseFirstNumber);
             cows = countCows(guessedNumber, chooseFirstNumber);
-            checkInputNumber(guessedNumber);
             if (guess >= 10) {
                 System.out.println("Bulls = " + bulls + "  Cows = " + cows);
                 System.out.println("Game over!");
@@ -101,6 +100,7 @@ public class Main {
                 continue;
             }
             if (guessedNumber.length() != 4) {
+                checkInputNumber(guessedNumber);
                 System.out.println("Try again");
                 continue;
             }
@@ -134,7 +134,7 @@ public class Main {
             checkInputNumber(guessTheNumber1);
 
             if (guess1 >= 10) {
-                System.out.println("Bulls = " + bulls + "Cows = " + cows);
+                System.out.println("Bulls = " + bulls + "  Cows = " + cows);
                 System.out.println("Game Over!");
                 System.out.println("The correct number for player one was: " + chooseFirstNumber);
                 isFound = false;
@@ -148,7 +148,7 @@ public class Main {
                 continue;
             }
             if (!checkForRepeatingNumbers(guessTheNumber1)) {
-                System.out.println("Bulls = " + bulls + "Cows = " + cows);
+                System.out.println("Bulls = " + bulls + "  Cows = " + cows);
                 guess1++;
             }
             if (bulls == 4) {
